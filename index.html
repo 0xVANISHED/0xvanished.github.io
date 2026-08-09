@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>0xVANISHED</title>
   <meta name="description" content="0xVANISHED">
   <link rel="preload" href="https://0xvanished.com/fonts/TTRoundsNeue-Compressed-Black.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="https://0xvanished.com/fonts/TTRoundsNeue-Compressed-Light.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="https://0xvanished.com/fonts/TTRoundsNeue-Compressed-LightItalic.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="https://0xvanished.com/fonts/fonts.css">
   <link rel="stylesheet" href="https://0xvanished.com/main.css">
   <style>
@@ -20,8 +22,11 @@
         done();
         return;
       }
-      document.fonts
-        .load('900 48px "TT Rounds Neue Compressed"')
+      Promise.all([
+        document.fonts.load('900 48px "TT Rounds Neue Compressed"'),
+        document.fonts.load('300 32px "TT Rounds Neue Compressed"'),
+        document.fonts.load('italic 300 32px "TT Rounds Neue Compressed"'),
+      ])
         .then(done)
         .catch(done);
       setTimeout(done, 2000);
@@ -29,12 +34,37 @@
   </script>
   
 </head>
-<body class="min-h-dvh bg-brand font-sans text-black antialiased">
+<body class="min-h-dvh overflow-x-hidden bg-brand font-sans text-black antialiased">
   
-<main class="grid min-h-dvh place-items-center p-6">
-  <h1 class="brand-mark font-display text-center text-[clamp(2.75rem,14vw,9.5rem)] font-black leading-none tracking-wide">
-    0xVANISHED
-  </h1>
+<main class="grid min-h-dvh place-items-center px-5 py-8 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(2rem,env(safe-area-inset-bottom))] sm:px-8">
+  <div class="flex w-full max-w-[min(100%,56rem)] flex-col items-center text-center">
+    <h1 class="brand-mark font-display w-full text-[clamp(2.25rem,12vw,9.5rem)] font-black leading-[0.95] tracking-wide break-words">
+      0xVANISHED
+    </h1>
+
+    <p class="brand-mark mt-4 flex max-w-full flex-wrap items-center justify-center gap-x-3 gap-y-1 px-1 font-display text-[clamp(0.95rem,3.2vw,1.2rem)] font-light italic tracking-wide text-black sm:mt-5 sm:gap-x-4">
+      <span>flynn joffray</span>
+      <a
+        class="inline-flex min-h-11 items-center text-black"
+        href="https://www.linkedin.com/in/flynnjoffray/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >linkedin</a>
+      <a
+        class="inline-flex min-h-11 items-center text-black"
+        href="https://github.com/0xVANISHED"
+        target="_blank"
+        rel="noopener noreferrer"
+      >github</a>
+    </p>
+
+    <a
+      class="brand-mark mt-8 inline-flex min-h-11 items-center px-2 font-display text-[clamp(1.15rem,4.8vw,1.85rem)] font-light tracking-wide text-black sm:mt-10"
+      href="https://0xvanished.com/color-schemes/"
+    >
+      日本 COLOR SCHEMES
+    </a>
+  </div>
 </main>
 
 </body>
