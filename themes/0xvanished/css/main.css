@@ -7,3 +7,11 @@
   --font-display: "TT Rounds Neue Compressed", "TT Rounds Neue", sans-serif;
   --font-sans: "TT Rounds Neue", sans-serif;
 }
+
+@layer base {
+  a {
+    color: inherit;
+    text-decoration-line: underline;
+    text-underline-offset: 0.18em;
+  }
+}

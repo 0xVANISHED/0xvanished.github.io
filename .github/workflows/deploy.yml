@@ -28,6 +28,8 @@ jobs:
         uses: shalzz/zola-deploy-action@v0.23.1
         env:
           BUILD_ONLY: true
+      - name: Drop full-size gallery originals
+        run: npm run clean:gallery-originals
 
   build_and_deploy:
     name: Build and deploy
@@ -43,8 +45,16 @@ jobs:
           cache: npm
       - name: Install and build CSS
         run: npm ci && npm run build:css
-      - name: Build and deploy
+      - name: Build site
         uses: shalzz/zola-deploy-action@v0.23.1
         env:
-          PAGES_BRANCH: gh_pages
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BUILD_ONLY: true
+      - name: Drop full-size gallery originals
+        run: npm run clean:gallery-originals
+      - name: Deploy to gh_pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh_pages
+          cname: 0xvanished.com

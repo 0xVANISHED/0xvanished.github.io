@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>{% block title %}{{ config.title | default(value=config.extra.brand | default(value="0xVANISHED")) }}{% endblock title %}</title>
   <meta name="description" content="{% block description %}{{ config.description | default(value="") }}{% endblock description %}">
   <link rel="preload" href="{{ get_url(path='fonts/TTRoundsNeue-Compressed-Black.ttf') }}" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="{{ get_url(path='fonts/TTRoundsNeue-Compressed-Light.ttf') }}" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="{{ get_url(path='fonts/TTRoundsNeue-Compressed-LightItalic.ttf') }}" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="{{ get_url(path='fonts/fonts.css') }}">
   <link rel="stylesheet" href="{{ get_url(path='main.css') }}">
   <style>
@@ -20,8 +22,11 @@
         done();
         return;
       }
-      document.fonts
-        .load('900 48px "TT Rounds Neue Compressed"')
+      Promise.all([
+        document.fonts.load('900 48px "TT Rounds Neue Compressed"'),
+        document.fonts.load('300 32px "TT Rounds Neue Compressed"'),
+        document.fonts.load('italic 300 32px "TT Rounds Neue Compressed"'),
+      ])
         .then(done)
         .catch(done);
       setTimeout(done, 2000);
@@ -29,7 +34,7 @@
   </script>
   {% block head %}{% endblock head %}
 </head>
-<body class="min-h-dvh bg-brand font-sans text-black antialiased">
+<body class="{% block body_class %}min-h-dvh overflow-x-hidden bg-brand font-sans text-black antialiased{% endblock body_class %}">
   {% block body %}{% endblock body %}
 </body>
 </html>

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} · {{ config.extra.brand | default(value="0xVANISHED") }}{% endblock title %}
+
+{% block body_class %}min-h-dvh overflow-x-hidden bg-white font-sans text-black antialiased{% endblock body_class %}
+
+{% block body %}
+<header class="sticky top-0 z-10 border-b border-black/10 bg-white pt-[env(safe-area-inset-top)]">
+  <nav class="flex items-center gap-2 px-4 py-3 sm:gap-3 sm:px-6 sm:py-4 md:px-8" aria-label="Gallery">
+    <a
+      class="brand-mark inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center font-display text-[clamp(1.15rem,4.5vw,1.75rem)] font-black tracking-wide text-black"
+      href="{{ get_url(path='@/_index.md') }}"
+      aria-label="Back to home"
+    >&lt;</a>
+    <h1 class="brand-mark font-display text-[clamp(1.15rem,4.5vw,1.75rem)] font-black tracking-wide">
+      {{ section.title }}
+    </h1>
+  </nav>
+</header>
+
+<main class="columns-1 gap-3 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:columns-2 sm:gap-4 sm:p-4 lg:columns-3 xl:columns-4">
+  {% for asset in section.assets | sort %}
+    {% set ext = asset | split(pat=".") | last | lower %}
+    {% if ext == "jpg" or ext == "jpeg" or ext == "png" or ext == "webp" or ext == "gif" %}
+      {% set image = resize_image(path=asset, width=1200, op="fit_width", format="webp", quality=80) %}
+      <figure class="mb-3 break-inside-avoid sm:mb-4">
+        <img
+          class="block h-auto w-full max-w-full"
+          src="{{ image.url }}"
+          width="{{ image.width }}"
+          height="{{ image.height }}"
+          alt="{{ section.title }}"
+          loading="lazy"
+          decoding="async"
+        >
+      </figure>
+    {% endif %}
+  {% endfor %}
+</main>
+{% endblock body %}
