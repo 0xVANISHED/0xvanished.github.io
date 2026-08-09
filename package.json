@@ -4,8 +4,7 @@
   "scripts": {
     "build:css": "tailwindcss -i ./themes/0xvanished/css/main.css -o ./themes/0xvanished/static/main.css --minify",
     "watch:css": "tailwindcss -i ./themes/0xvanished/css/main.css -o ./themes/0xvanished/static/main.css --watch",
-    "build": "npm run build:css && zola build && npm run clean:gallery-originals",
-    "clean:gallery-originals": "rm -f public/color-schemes/*.{jpg,jpeg,png,JPG,JPEG,PNG}",
+    "build": "npm run build:css && zola build",
     "dev": "npm run build:css && concurrently -k -n css,zola -c yellow,cyan \"npm run watch:css\" \"zola serve\""
   },
   "devDependencies": {

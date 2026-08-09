@@ -24,15 +24,17 @@
     {% if ext == "jpg" or ext == "jpeg" or ext == "png" or ext == "webp" or ext == "gif" %}
       {% set image = resize_image(path=asset, width=1200, op="fit_width", format="webp", quality=80) %}
       <figure class="mb-3 break-inside-avoid sm:mb-4">
-        <img
-          class="block h-auto w-full max-w-full"
-          src="{{ image.url }}"
-          width="{{ image.width }}"
-          height="{{ image.height }}"
-          alt="{{ section.title }}"
-          loading="lazy"
-          decoding="async"
-        >
+        <a class="block no-underline" href="{{ get_url(path=asset) }}" target="_blank" rel="noopener noreferrer">
+          <img
+            class="block h-auto w-full max-w-full"
+            src="{{ image.url }}"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+            alt="{{ section.title }}"
+            loading="lazy"
+            decoding="async"
+          >
+        </a>
       </figure>
     {% endif %}
   {% endfor %}
