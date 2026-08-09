@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@source "../templates/**/*.html";
+
+@theme {
+  --color-brand: #eeb211;
+  --font-display: "TT Rounds Neue Compressed", "TT Rounds Neue", sans-serif;
+  --font-sans: "TT Rounds Neue", sans-serif;
+}

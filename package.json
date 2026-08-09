@@ -1,0 +1,15 @@
+{
+  "name": "0xvanished",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./themes/0xvanished/css/main.css -o ./themes/0xvanished/static/main.css --minify",
+    "watch:css": "tailwindcss -i ./themes/0xvanished/css/main.css -o ./themes/0xvanished/static/main.css --watch",
+    "build": "npm run build:css && zola build",
+    "dev": "npm run build:css && concurrently -k -n css,zola -c yellow,cyan \"npm run watch:css\" \"zola serve\""
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "concurrently": "^10.0.4",
+    "tailwindcss": "^4.1.11"
+  }
+}

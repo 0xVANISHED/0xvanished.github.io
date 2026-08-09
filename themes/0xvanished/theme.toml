@@ -1,0 +1,13 @@
+name = "0xvanished"
+description = "Theme for 0xVANISHED"
+license = "MIT"
+homepage = "https://0xvanished.com"
+min_version = "0.19.0"
+demo = "https://0xvanished.com"
+
+[extra]
+brand = "0xVANISHED"
+
+[author]
+name = "0xVANISHED"
+homepage = "https://0xvanished.com"

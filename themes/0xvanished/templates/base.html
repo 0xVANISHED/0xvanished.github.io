@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ config.title | default(value=config.extra.brand | default(value="0xVANISHED")) }}{% endblock title %}</title>
+  <meta name="description" content="{% block description %}{{ config.description | default(value="") }}{% endblock description %}">
+  <link rel="stylesheet" href="{{ get_url(path='fonts/fonts.css') }}">
+  <link rel="stylesheet" href="{{ get_url(path='main.css') }}">
+  {% block head %}{% endblock head %}
+</head>
+<body class="min-h-dvh bg-brand font-sans text-black antialiased">
+  {% block body %}{% endblock body %}
+</body>
+</html>

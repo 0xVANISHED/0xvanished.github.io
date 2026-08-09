@@ -1,0 +1,50 @@
+name: Zola on GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build only
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install and build CSS
+        run: npm ci && npm run build:css
+      - name: Build site
+        uses: shalzz/zola-deploy-action@v0.23.1
+        env:
+          BUILD_ONLY: true
+
+  build_and_deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install and build CSS
+        run: npm ci && npm run build:css
+      - name: Build and deploy
+        uses: shalzz/zola-deploy-action@v0.23.1
+        env:
+          PAGES_BRANCH: gh_pages
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
