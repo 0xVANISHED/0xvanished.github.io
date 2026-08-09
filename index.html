@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>0xVANISHED</title>
+  <meta name="description" content="0xVANISHED">
+  <link rel="preload" href="https://0xvanished.com/fonts/TTRoundsNeue-Compressed-Black.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="https://0xvanished.com/fonts/fonts.css">
+  <link rel="stylesheet" href="https://0xvanished.com/main.css">
+  <style>
+    .brand-mark { visibility: hidden; }
+    .fonts-ready .brand-mark { visibility: visible; }
+  </style>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var done = function () { root.classList.add("fonts-ready"); };
+      if (!document.fonts || !document.fonts.load) {
+        done();
+        return;
+      }
+      document.fonts
+        .load('900 48px "TT Rounds Neue Compressed"')
+        .then(done)
+        .catch(done);
+      setTimeout(done, 2000);
+    })();
+  </script>
+  
+</head>
+<body class="min-h-dvh bg-brand font-sans text-black antialiased">
+  
+<main class="grid min-h-dvh place-items-center p-6">
+  <h1 class="brand-mark font-display text-center text-[clamp(2.75rem,14vw,9.5rem)] font-black leading-none tracking-wide">
+    0xVANISHED
+  </h1>
+</main>
+
+</body>
+</html>
