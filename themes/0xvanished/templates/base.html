@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover, shrink-to-fit=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
   <title>{% block title %}{{ config.title | default(value=config.extra.brand | default(value="0xVANISHED")) }}{% endblock title %}</title>
   <meta name="description" content="{% block description %}{{ config.description | default(value="") }}{% endblock description %}">
   <link rel="preload" href="{{ get_url(path='fonts/TTRoundsNeue-Compressed-Black.ttf') }}" as="font" type="font/ttf" crossorigin>

@@ -9,6 +9,18 @@
 }
 
 @layer base {
+  html {
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   a {
     color: inherit;
     text-decoration-line: underline;
