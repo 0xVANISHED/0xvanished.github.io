@@ -5,8 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ config.title | default(value=config.extra.brand | default(value="0xVANISHED")) }}{% endblock title %}</title>
   <meta name="description" content="{% block description %}{{ config.description | default(value="") }}{% endblock description %}">
+  <link rel="preload" href="{{ get_url(path='fonts/TTRoundsNeue-Compressed-Black.ttf') }}" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="{{ get_url(path='fonts/fonts.css') }}">
   <link rel="stylesheet" href="{{ get_url(path='main.css') }}">
+  <style>
+    .brand-mark { visibility: hidden; }
+    .fonts-ready .brand-mark { visibility: visible; }
+  </style>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var done = function () { root.classList.add("fonts-ready"); };
+      if (!document.fonts || !document.fonts.load) {
+        done();
+        return;
+      }
+      document.fonts
+        .load('900 48px "TT Rounds Neue Compressed"')
+        .then(done)
+        .catch(done);
+      setTimeout(done, 2000);
+    })();
+  </script>
   {% block head %}{% endblock head %}
 </head>
 <body class="min-h-dvh bg-brand font-sans text-black antialiased">
