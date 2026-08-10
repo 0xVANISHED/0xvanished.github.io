@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} · {{ config.extra.brand | default(value="0xVANISHED") }}{% endblock title %}
+
+{% block description %}{{ page.content | striptags | truncate(length=160) }}{% endblock description %}
+
+{% block head %}
+  <link rel="preload" href="{{ get_url(path='fonts/TTRoundsNeue-Compressed-DemiBold.ttf') }}" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="{{ get_url(path='fonts/TTRoundsNeue-Compressed-Light.ttf') }}" as="font" type="font/ttf" crossorigin>
+  <style>
+    .project-shell {
+      --color-project: {{ page.extra.gradient_from | default(value="#E6B4C7") }};
+      --color-project-deep: {{ page.extra.gradient_to | default(value="#97728D") }};
+      --color-project-text: {{ page.extra.text | default(value="#1E242D") }};
+    }
+  </style>
+{% endblock head %}
+
+{% block body_class %}project-shell min-h-dvh overflow-x-hidden font-sans antialiased{% endblock body_class %}
+
+{% block body %}
+<header class="sticky top-0 z-10 border-b border-project-text/15 bg-project pt-[env(safe-area-inset-top)]">
+  <nav class="flex items-center gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4 md:px-8" aria-label="Project">
+    <a
+      class="brand-mark inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center font-display text-[clamp(1.15rem,4.5vw,1.75rem)] font-black tracking-wide text-project-text no-underline"
+      href="{{ get_url(path='@/_index.md') }}"
+      aria-label="Back to home"
+    >&lt;</a>
+    <p class="brand-mark font-display text-[clamp(1.15rem,4.5vw,1.75rem)] font-black tracking-wide text-project-text">
+      {{ config.extra.brand | default(value="0xVANISHED") }}
+    </p>
+  </nav>
+</header>
+
+<main class="mx-auto w-full max-w-3xl px-4 py-8 pb-[max(2rem,env(safe-area-inset-bottom))] sm:px-6 sm:py-10 md:px-8">
+  <h1 class="brand-mark w-full max-w-full font-display text-[clamp(1.85rem,9vw,5.75rem)] font-semibold leading-[1.15] tracking-[0.06em] text-project-text hyphens-none break-words [overflow-wrap:anywhere]">
+    {{ page.title }}
+  </h1>
+
+  {% if page.content %}
+    <div class="brand-mark project-copy mt-8 font-sans text-[clamp(1.05rem,3.2vw,1.25rem)] font-light leading-[1.75] tracking-[0.02em] text-project-text sm:mt-10">
+      {{ page.content | safe }}
+    </div>
+  {% endif %}
+</main>
+{% endblock body %}

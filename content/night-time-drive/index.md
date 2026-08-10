@@ -4,6 +4,7 @@ template = "mixtape.html"
 date = 2024-01-01
 
 [extra]
+kind = "mixtape"
 spotify_embed = "https://open.spotify.com/embed/playlist/0O4Ivi554Xh2oS5wISGTww?utm_source=generator&si=e7002b6df6504463"
 gradient_from = "#AF5F10"
 gradient_to = "#601C00"

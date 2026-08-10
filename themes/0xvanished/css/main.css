@@ -7,6 +7,9 @@
   --color-brand-dark: #a67c0c;
   --color-mixtape: #af5f10;
   --color-mixtape-deep: #601c00;
+  --color-project: #e6b4c7;
+  --color-project-deep: #97728d;
+  --color-project-text: #1e242d;
   --font-display: "TT Rounds Neue Compressed", "TT Rounds Neue", sans-serif;
   --font-sans: "TT Rounds Neue", sans-serif;
 }
@@ -38,5 +41,73 @@
 
   .mixtape-copy p + p {
     margin-top: 1.15em;
+  }
+
+  .project-shell {
+    color: var(--color-project-text);
+    background-color: var(--color-project-deep);
+    background-image: linear-gradient(180deg, var(--color-project) 0%, var(--color-project-deep) 100%);
+  }
+
+  .project-copy h2 {
+    margin-top: 1.75em;
+    margin-bottom: 0.55em;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 4.5vw, 1.85rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+  }
+
+  .project-copy h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.45em;
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 3.6vw, 1.45rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.25;
+  }
+
+  .project-copy p,
+  .project-copy ul,
+  .project-copy ol {
+    margin-top: 1em;
+  }
+
+  .project-copy ul,
+  .project-copy ol {
+    padding-left: 1.25em;
+  }
+
+  .project-copy ul {
+    list-style-type: disc;
+  }
+
+  .project-copy ol {
+    list-style-type: decimal;
+  }
+
+  .project-copy li + li {
+    margin-top: 0.4em;
+  }
+
+  .project-copy img {
+    width: 100%;
+    height: auto;
+    margin-top: 1.5em;
+    margin-bottom: 0.35em;
+  }
+
+  .project-copy p:has(img) {
+    margin-top: 0;
+  }
+
+  .project-copy code {
+    font-size: 0.92em;
+  }
+
+  .project-copy h2:first-child {
+    margin-top: 0;
   }
 }

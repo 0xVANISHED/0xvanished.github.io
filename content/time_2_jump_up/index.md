@@ -4,6 +4,7 @@ template = "mixtape.html"
 date = 2024-06-01
 
 [extra]
+kind = "mixtape"
 link_title = "TIME_2_JUMP_UP"
 spotify_embed = "https://open.spotify.com/embed/playlist/1ZEFQrSngZkI9hqNSTiea2?utm_source=generator&si=7cec0642da3347ed"
 gradient_from = "#0B6CFF"
