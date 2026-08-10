@@ -32,9 +32,17 @@
 </header>
 
 <main class="mx-auto w-full max-w-3xl px-4 py-8 pb-[max(2rem,env(safe-area-inset-bottom))] sm:px-6 sm:py-10 md:px-8">
-  <h1 class="brand-mark w-full max-w-full font-display text-[clamp(1.85rem,9vw,5.75rem)] font-semibold leading-[1.15] tracking-[0.06em] text-white hyphens-none break-words [overflow-wrap:anywhere]">
-    {% set title_parts = page.title | split(pat="_") %}
-    {% for part in title_parts %}{% if not loop.first %}_<wbr>{% endif %}{{ part }}{% endfor %}
+  <h1
+    class="brand-mark w-full max-w-full font-display text-[clamp(1.85rem,9vw,5.75rem)] font-semibold tracking-[0.06em] text-white hyphens-none break-words [overflow-wrap:anywhere]"
+    style="line-height: {{ page.extra.title_leading | default(value="1.15") }};"
+  >
+    {% set colon_parts = page.title | split(pat=": ") %}
+    {% if colon_parts | length > 1 %}
+      {{ colon_parts[0] }}:<br>{{ colon_parts[1] }}
+    {% else %}
+      {% set title_parts = page.title | split(pat="_") %}
+      {% for part in title_parts %}{% if not loop.first %}_<wbr>{% endif %}{{ part }}{% endfor %}
+    {% endif %}
   </h1>
 
   {% if page.content %}
@@ -43,19 +51,45 @@
     </div>
   {% endif %}
 
-  {% for asset in page.assets %}
+  {% if page.extra.audio %}
+    <div class="brand-mark mixtape-audio mt-8 flex flex-col gap-5 sm:mt-10">
+      {% for track in page.extra.audio %}
+        <div>
+          <p class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+            <span class="font-display text-[clamp(1.05rem,3.2vw,1.25rem)] font-semibold tracking-[0.06em] text-white">
+              {{ track.label }}
+            </span>
+            <a
+              class="font-display text-[clamp(0.85rem,2.4vw,0.95rem)] font-light tracking-wide text-white"
+              href="{{ track.url }}"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+            >(download)</a>
+          </p>
+          <audio class="mt-2 w-full" controls preload="metadata" src="{{ track.url }}">
+            <a href="{{ track.url }}">Download {{ track.label }}</a>
+          </audio>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% for asset in page.assets | sort %}
     {% set ext = asset | split(pat=".") | last | lower %}
     {% if ext == "jpg" or ext == "jpeg" or ext == "png" or ext == "webp" or ext == "gif" %}
       {% set image = resize_image(path=asset, width=1800, op="fit_width", format="webp", quality=85) %}
       <figure class="mt-8 sm:mt-10">
-        <img
-          class="block h-auto w-full max-w-full"
-          src="{{ image.url }}"
-          width="{{ image.width }}"
-          height="{{ image.height }}"
-          alt="{{ page.title }} artwork"
-          decoding="async"
-        >
+        <a class="block no-underline" href="{{ get_url(path=asset) }}" target="_blank" rel="noopener noreferrer">
+          <img
+            class="block h-auto w-full max-w-full"
+            src="{{ image.url }}"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+            alt="{{ page.title }} artwork"
+            decoding="async"
+          >
+        </a>
       </figure>
     {% endif %}
   {% endfor %}

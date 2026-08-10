@@ -187,6 +187,9 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
@@ -266,6 +269,9 @@
   .place-items-center {
     place-items: center;
   }
+  .items-baseline {
+    align-items: baseline;
+  }
   .items-center {
     align-items: center;
   }
@@ -283,6 +289,9 @@
   }
   .gap-\[0\.4em\] {
     gap: 0.4em;
+  }
+  .gap-x-2 {
+    column-gap: calc(var(--spacing) * 2);
   }
   .gap-x-3 {
     column-gap: calc(var(--spacing) * 3);
@@ -391,6 +400,9 @@
   }
   .font-sans {
     font-family: var(--font-sans);
+  }
+  .text-\[clamp\(0\.85rem\,2\.4vw\,0\.95rem\)\] {
+    font-size: clamp(0.85rem, 2.4vw, 0.95rem);
   }
   .text-\[clamp\(0\.95rem\,3\.2vw\,1\.2rem\)\] {
     font-size: clamp(0.95rem, 3.2vw, 1.2rem);
@@ -571,6 +583,12 @@
   }
   .mixtape-copy p + p {
     margin-top: 1.15em;
+  }
+  .mixtape-audio audio {
+    display: block;
+    width: 100%;
+    height: 2.75rem;
+    accent-color: #fff;
   }
   .project-shell {
     color: var(--color-project-text);

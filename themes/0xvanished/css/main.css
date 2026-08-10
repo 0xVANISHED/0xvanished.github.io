@@ -43,6 +43,13 @@
     margin-top: 1.15em;
   }
 
+  .mixtape-audio audio {
+    display: block;
+    width: 100%;
+    height: 2.75rem;
+    accent-color: #fff;
+  }
+
   .project-shell {
     color: var(--color-project-text);
     background-color: var(--color-project-deep);

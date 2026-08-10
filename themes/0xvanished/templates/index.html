@@ -97,7 +97,7 @@
                 decoding="async"
               >
             {% endif %}
-            <span>{% if page.extra.kind == "mixtape" or page.extra.spotify_embed %}Mixtape: {% endif %}{{ label }}</span>
+            <span class="text-center leading-[1.15]">{% if page.extra.kind == "mixtape" or page.extra.spotify_embed %}Mixtape: {% endif %}{{ label | safe }}</span>
           </a>
         {% endif %}
       {% endfor %}

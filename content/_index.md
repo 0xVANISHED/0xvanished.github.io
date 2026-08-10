@@ -5,6 +5,7 @@ sort_by = "date"
 [extra]
 # Pepper mixtapes between other projects on the home page
 home_order = [
+  "rich-white-dude/index.md",
   "voidmart/index.md",
   "time_2_jump_up/index.md",
   "color-schemes",
