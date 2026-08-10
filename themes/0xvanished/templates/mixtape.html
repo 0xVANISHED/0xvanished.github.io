@@ -75,24 +75,26 @@
     </div>
   {% endif %}
 
-  {% for asset in page.assets | sort %}
-    {% set ext = asset | split(pat=".") | last | lower %}
-    {% if ext == "jpg" or ext == "jpeg" or ext == "png" or ext == "webp" or ext == "gif" %}
-      {% set image = resize_image(path=asset, width=1800, op="fit_width", format="webp", quality=85) %}
-      <figure class="mt-8 sm:mt-10">
-        <a class="block no-underline" href="{{ get_url(path=asset) }}" target="_blank" rel="noopener noreferrer">
-          <img
-            class="block h-auto w-full max-w-full"
-            src="{{ image.url }}"
-            width="{{ image.width }}"
-            height="{{ image.height }}"
-            alt="{{ page.title }} artwork"
-            decoding="async"
-          >
-        </a>
-      </figure>
-    {% endif %}
-  {% endfor %}
+  {% if not page.extra.skip_asset_gallery %}
+    {% for asset in page.assets | sort %}
+      {% set ext = asset | split(pat=".") | last | lower %}
+      {% if ext == "jpg" or ext == "jpeg" or ext == "png" or ext == "webp" or ext == "gif" %}
+        {% set image = resize_image(path=asset, width=1800, op="fit_width", format="webp", quality=85) %}
+        <figure class="mt-8 sm:mt-10">
+          <a class="block no-underline" href="{{ get_url(path=asset) }}" target="_blank" rel="noopener noreferrer">
+            <img
+              class="block h-auto w-full max-w-full"
+              src="{{ image.url }}"
+              width="{{ image.width }}"
+              height="{{ image.height }}"
+              alt="{{ page.title }} artwork"
+              decoding="async"
+            >
+          </a>
+        </figure>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 
   {% if page.extra.spotify_embed %}
     <div class="mt-10 sm:mt-12">

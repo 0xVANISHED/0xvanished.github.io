@@ -43,6 +43,31 @@
     margin-top: 1.15em;
   }
 
+  .mixtape-copy p:has(a img) {
+    margin-top: 1.75em;
+    margin-bottom: 0.25em;
+  }
+
+  .mixtape-copy a:has(img) {
+    display: block;
+    text-decoration: none;
+  }
+
+  .mixtape-copy img {
+    width: 100%;
+    height: auto;
+  }
+
+  .mixtape-copy blockquote {
+    margin-top: 1.15em;
+    padding-left: 0.9em;
+    border-left: 2px solid rgba(255, 255, 255, 0.35);
+  }
+
+  .mixtape-copy blockquote p {
+    margin: 0;
+  }
+
   .mixtape-audio audio {
     display: block;
     width: 100%;
