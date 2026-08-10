@@ -3,7 +3,7 @@
 {% block body %}
 <main class="grid min-h-dvh place-items-center px-5 py-8 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(2rem,env(safe-area-inset-bottom))] sm:px-8">
   <div class="flex w-full max-w-[min(100%,56rem)] flex-col items-center text-center">
-    <h1 class="brand-mark font-display w-full text-[clamp(2.25rem,12vw,9.5rem)] font-black leading-[0.95] tracking-wide break-words">
+    <h1 class="brand-mark font-display w-full text-[clamp(2.85rem,15vw,9.5rem)] font-black leading-[0.95] tracking-wide break-words">
       {{ config.extra.brand | default(value="0xVANISHED") }}
     </h1>
 
@@ -23,12 +23,74 @@
       >github</a>
     </p>
 
-    <a
-      class="brand-mark mt-8 inline-flex min-h-11 items-center px-2 font-display text-[clamp(1.15rem,4.8vw,1.85rem)] font-light tracking-wide text-black sm:mt-10"
-      href="{{ get_url(path='@/color-schemes/_index.md') }}"
+    <hr class="mt-8 w-full max-w-[min(100%,22rem)] border-0 border-t border-brand-dark sm:mt-10" >
+
+    <nav
+      class="brand-mark mt-6 flex flex-col items-center gap-5 font-display text-[clamp(1.15rem,4.8vw,1.85rem)] font-light uppercase tracking-wide text-black sm:mt-7 sm:gap-6"
+      aria-label="Projects"
     >
-      日本 COLOR SCHEMES
-    </a>
+      {% for page in section.pages %}
+        {% set_global thumb_url = false %}
+        {% set_global thumb_w = 0 %}
+        {% set_global thumb_h = 0 %}
+        {% for asset in page.assets %}
+          {% set ext = asset | split(pat=".") | last | lower %}
+          {% if not thumb_url and (ext == "jpg" or ext == "jpeg" or ext == "png" or ext == "webp" or ext == "gif") %}
+            {% set image = resize_image(path=asset, width=256, op="fit_width", format="webp", quality=78) %}
+            {% set_global thumb_url = image.url %}
+            {% set_global thumb_w = image.width %}
+            {% set_global thumb_h = image.height %}
+          {% endif %}
+        {% endfor %}
+        <a class="inline-flex min-h-11 items-center gap-[0.4em] px-2 text-black no-underline" href="{{ page.permalink }}">
+          {% if thumb_url %}
+            <img
+              class="size-[0.8lh] shrink-0 self-center rounded-full object-cover object-center"
+              src="{{ thumb_url }}"
+              width="{{ thumb_w }}"
+              height="{{ thumb_h }}"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            >
+          {% endif %}
+          <span>Mixtape: {{ page.extra.link_title | default(value=page.title) }}</span>
+        </a>
+      {% endfor %}
+
+      {% set color_schemes = get_section(path="color-schemes/_index.md") %}
+      {% set_global cs_thumb_url = false %}
+      {% set_global cs_thumb_w = 0 %}
+      {% set_global cs_thumb_h = 0 %}
+      {% for asset in color_schemes.assets | sort %}
+        {% set ext = asset | split(pat=".") | last | lower %}
+        {% if not cs_thumb_url and (ext == "jpg" or ext == "jpeg" or ext == "png" or ext == "webp" or ext == "gif") %}
+          {% set image = resize_image(path=asset, width=256, op="fit_width", format="webp", quality=78) %}
+          {% set_global cs_thumb_url = image.url %}
+          {% set_global cs_thumb_w = image.width %}
+          {% set_global cs_thumb_h = image.height %}
+        {% endif %}
+      {% endfor %}
+      <a
+        class="inline-flex min-h-11 items-center gap-[0.4em] px-2 text-black no-underline"
+        href="{{ color_schemes.permalink }}"
+      >
+        {% if cs_thumb_url %}
+          <img
+            class="size-[0.8lh] shrink-0 self-center rounded-full object-cover object-center"
+            src="{{ cs_thumb_url }}"
+            width="{{ cs_thumb_w }}"
+            height="{{ cs_thumb_h }}"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+          >
+        {% endif %}
+        <span>{{ color_schemes.title }}</span>
+      </a>
+    </nav>
   </div>
 </main>
 {% endblock body %}

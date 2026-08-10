@@ -12,9 +12,9 @@
       href="{{ get_url(path='@/_index.md') }}"
       aria-label="Back to home"
     >&lt;</a>
-    <h1 class="brand-mark font-display text-[clamp(1.15rem,4.5vw,1.75rem)] font-black tracking-wide">
-      {{ section.title }}
-    </h1>
+    <p class="brand-mark font-display text-[clamp(1.15rem,4.5vw,1.75rem)] font-black tracking-wide">
+      {{ config.extra.brand | default(value="0xVANISHED") }}
+    </p>
   </nav>
 </header>
 
