@@ -29,7 +29,7 @@
       class="brand-mark mt-6 flex flex-col items-center gap-5 font-display text-[clamp(1.15rem,4.8vw,1.85rem)] font-light uppercase tracking-wide text-black sm:mt-7 sm:gap-6"
       aria-label="Projects"
     >
-      {% for entry in section.extra.home_order %}
+      {% for entry in section.extra.home_projects %}
         {% if entry == "color-schemes" %}
           {% set color_schemes = get_section(path="color-schemes/_index.md") %}
           {% set_global thumb_url = false %}
@@ -97,9 +97,50 @@
                 decoding="async"
               >
             {% endif %}
-            <span class="text-center leading-[1.15]">{% if page.extra.kind == "mixtape" or page.extra.spotify_embed %}Mixtape: {% endif %}{{ label | safe }}</span>
+            <span class="text-center leading-[1.15]">{{ label | safe }}</span>
           </a>
         {% endif %}
+      {% endfor %}
+
+      <hr class="w-full max-w-[min(100%,22rem)] border-0 border-t border-brand-dark" >
+
+      {% for entry in section.extra.home_mixtapes %}
+        {% set page = get_page(path=entry) %}
+        {% set_global thumb_url = false %}
+        {% set_global thumb_w = 0 %}
+        {% set_global thumb_h = 0 %}
+        {% if page.extra.cover %}
+          {% set image = resize_image(path=page.extra.cover, width=256, op="fit_width", format="webp", quality=78) %}
+          {% set_global thumb_url = image.url %}
+          {% set_global thumb_w = image.width %}
+          {% set_global thumb_h = image.height %}
+        {% else %}
+          {% for asset in page.assets %}
+            {% set ext = asset | split(pat=".") | last | lower %}
+            {% if not thumb_url and (ext == "jpg" or ext == "jpeg" or ext == "png" or ext == "webp" or ext == "gif") %}
+              {% set image = resize_image(path=asset, width=256, op="fit_width", format="webp", quality=78) %}
+              {% set_global thumb_url = image.url %}
+              {% set_global thumb_w = image.width %}
+              {% set_global thumb_h = image.height %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        {% set label = page.extra.link_title | default(value=page.title) %}
+        <a class="inline-flex min-h-11 items-center gap-[0.4em] px-2 text-black no-underline" href="{{ page.permalink }}">
+          {% if thumb_url %}
+            <img
+              class="size-[0.8lh] shrink-0 self-center rounded-full object-cover object-center"
+              src="{{ thumb_url }}"
+              width="{{ thumb_w }}"
+              height="{{ thumb_h }}"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            >
+          {% endif %}
+          <span class="text-center leading-[1.15]">Mixtape: {{ label | safe }}</span>
+        </a>
       {% endfor %}
     </nav>
   </div>
