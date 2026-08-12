@@ -25,4 +25,4 @@ Welcome to your journey around the world!
 
 You are a wealthy traveler circumnavigating the globe aboard a yacht. Each song is from an artist of that countries origin. From the French Riviera to the Pacific coast, tonight we follow a most unusual voyage. So cast off the lines, settle in, and enjoy the journey.
 
-This mixtape was made for an exchange with the theme of "the salty seas". I didn't really want to make a pirate-themed mixtape, so now we have this... interpretation. Each track is a different artist from the port/country you sailed into. You can listen to the playlist of individual songs, or the original side A and B recordings with everything added in.
+This mixtape was made for an exchange with the theme of "the salty seas". I didn't really want to make a pirate-themed mixtape, so now we have this... interpretation. Each track is a different artist from the port/country you sailed into. You can listen to the playlist of individual songs, or the original side A and B recordings with all my wacky voiceovers added in (da real experienze)
