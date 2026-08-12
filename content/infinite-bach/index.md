@@ -14,15 +14,27 @@ title_leading = "0.95"
 skip_asset_gallery = true
 +++
 
-Sometimes you just get stuck on a song. Well that song has been this *one* song for me, for at least two decades. I have listened to every variation I can get my hands on, lots not even on the internet. This is my "hot take" for performers of Bach Partita No. 2 in D minor BWV 1004: Ciaconna.
+Welcome to one of the greatest pieces of music that has ever been written.
 
-This was made into a mixtape for a cassette exchange with the theme of "drugs". Now, I didn't want to just do some hendrix mixtape. Everyone knows half the musicians that record are on drugs. But what if you heard the same song, just slightly different, over and over. Are YOU on drugs?!?
+Which is part of an arrangement of music that is undoubtedly the best compositional cycle for solo violin ever written, in the whole history of music, which some consider one of the greatest achivements of any man in history.
 
-There is also a much longer playlist than the mixtape [here](https://open.spotify.com/playlist/7aOL79407RCXSGYXzNEpM3?si=WWWFJu6dTNuqUw2usBaEOQ), borderline infinite — if you want the full experience.
+_(that's not just my opinion, it's the opinion of Joshua Bell, one of the worlds best violinists. that mother fucker busked in a subway playing this song with a multimillion-dollar Stradivarius violin one time...)_
+
+J. S. FUCKING. B. A. C. H.
+
+Oh yeah, it was also written ~300 years ago. The average performance time of this particular piece of the partita goes about ~16 minutes.
+
+So now I can say... Sometimes you just get stuck on a song. Well this song has been my **one** song for at least two decades. I have listened to every variation I can get my hands on. I even partially melted the last known 1/4" reel-to-reel recording by an obscure 20's violinist accidently in a library one time.
+
+Here are some of my "hot takes" for performers of Bach Partita No. 2 in D minor BWV 1004: Ciaconna.
+
+> This was made into a mixtape for a cassette exchange with the theme of "drugs". Now, I didn't want to just do some hendrix mixtape. Everyone knows half the musicians that record are on drugs. But what if you heard the same song, just slightly different, over and over again for 90 minutes. Are YOU on drugs?!?
+
+> There is also a much longer playlist than the mixtape [here](https://open.spotify.com/playlist/7aOL79407RCXSGYXzNEpM3?si=WWWFJu6dTNuqUw2usBaEOQ) — if you want the full experience.
 
 [![Infinite Bach j-card](jcard.png)](jcard.png)
 
-Here are the full notes included inside the mixtape. I don't think anyone will ever request my *complete* review for every performer, but I have it...
+My brief notes for artists included just in this mixtape. I don't think anyone will ever request my *complete* review for every performer forever, but I have it and its long...
 
 > Andres Segovia — because fucking master on guitar. Why play the notes written when you fucking know what the vibe is from the start. This performance is almost not fair compared to others on the violin, the classical guitar style is very unique and I haven't heard anyone attempt it before. True brilliance.
 
