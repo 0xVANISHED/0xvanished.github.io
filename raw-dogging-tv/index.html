@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover, shrink-to-fit=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <title>Raw dogging TV channels · 0xVANISHED</title>
+  <meta name="description" content="
+Sometimes I enjoy pausing and figuring out a piece of technology or methodology that we often take for granted. A long while ago when everyone switched to &quot;dig…">
+  <link rel="preload" href="https://0xvanished.com/fonts/TTRoundsNeue-Compressed-Black.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="https://0xvanished.com/fonts/TTRoundsNeue-Compressed-Light.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="https://0xvanished.com/fonts/TTRoundsNeue-Compressed-LightItalic.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="https://0xvanished.com/fonts/fonts.css">
+  <link rel="stylesheet" href="https://0xvanished.com/main.css">
+  <style>
+    .brand-mark { visibility: hidden; }
+    .fonts-ready .brand-mark { visibility: visible; }
+  </style>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var done = function () { root.classList.add("fonts-ready"); };
+      if (!document.fonts || !document.fonts.load) {
+        done();
+        return;
+      }
+      Promise.all([
+        document.fonts.load('900 48px "TT Rounds Neue Compressed"'),
+        document.fonts.load('300 32px "TT Rounds Neue Compressed"'),
+        document.fonts.load('italic 300 32px "TT Rounds Neue Compressed"'),
+      ])
+        .then(done)
+        .catch(done);
+      setTimeout(done, 2000);
+    })();
+  </script>
+  
+  <link rel="preload" href="https://0xvanished.com/fonts/TTRoundsNeue-Compressed-DemiBold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="https://0xvanished.com/fonts/TTRoundsNeue-Compressed-Light.ttf" as="font" type="font/ttf" crossorigin>
+  <style>
+    .project-shell {
+      --color-project: #FFB07A;
+      --color-project-deep: #8EB0FF;
+      --color-project-text: #1A1433;
+    }
+  </style>
+
+</head>
+<body class="project-shell min-h-dvh overflow-x-hidden font-sans antialiased">
+  
+<header class="sticky top-0 z-10 border-b border-project-text/15 bg-project pt-[env(safe-area-inset-top)]">
+  <nav class="flex items-center gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4 md:px-8" aria-label="Project">
+    <a
+      class="brand-mark inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center font-display text-[clamp(1.15rem,4.5vw,1.75rem)] font-black tracking-wide text-project-text no-underline"
+      href="https://0xvanished.com/"
+      aria-label="Back to home"
+    >&lt;</a>
+    <p class="brand-mark font-display text-[clamp(1.15rem,4.5vw,1.75rem)] font-black tracking-wide text-project-text">
+      0xVANISHED
+    </p>
+  </nav>
+</header>
+
+<main class="mx-auto w-full max-w-3xl px-4 py-8 pb-[max(2rem,env(safe-area-inset-bottom))] sm:px-6 sm:py-10 md:px-8">
+  <h1 class="brand-mark w-full max-w-full font-display text-[clamp(1.85rem,9vw,5.75rem)] font-semibold leading-[1.15] tracking-[0.06em] text-project-text hyphens-none break-words [overflow-wrap:anywhere]">
+    Raw dogging TV channels
+  </h1>
+
+  
+    <div class="brand-mark project-copy mt-8 font-sans text-[clamp(1.05rem,3.2vw,1.25rem)] font-light leading-[1.75] tracking-[0.02em] text-project-text sm:mt-10">
+      <p><img src="https://0xvanished.com/raw-dogging-tv/qvc.webp" alt="A QVC broadcast, mid pitch" /></p>
+<p>Sometimes I enjoy pausing and figuring out a piece of technology or methodology that we often take for granted. A long while ago when everyone switched to "digital tv" broadcasting I actually never took a second look, but diving into how it gets done was pretty fascinating.</p>
+<p>Once I realized that all TV channels are broadcasting on VHF/UHF frequencies, I knew I could probably decode those streams in real time. I've had a little SDR I wasn't using for anything (<a rel="external" href="https://airspy.com/airspy-r2/">Airspy</a>), and a ton of different antennas so I thought what the hell, let's try. It was also a good excuse to dive back into some signal processing libraries I haven't looked at in quite some time.</p>
+<p>Things that blow my mind:</p>
+<ul>
+<li>My little tiny Airspy, which is powered over USB, can output 10 MSPS of raw IQ (and can do much more in other modes). That is just bad ass. That's 10 MILLION samples per SECOND.</li>
+<li>The broadcast channels are essentially streaming an MPEG transport stream, with its metadata and nice things (closed captioning, etc.) over the air, and also keeping a close enough spectrum variance that on a little old Intel NUC I can decode essentially 8 real time streams at the same time... reconstructed from raw signal data.</li>
+<li>You really can, with enough time and effort, gain knowledge from older technologies and apply that thinking to tons of different scenarios.</li>
+<li>I could probably build a pirate TV station...</li>
+</ul>
+<p>Now, should you do this to normally watch TV? Absolutely not. It's so inefficient and there are hardware decoders that take care of all these problems, in a much better way, for not much money at all. Was it fun? Hell yes.</p>
+<p>I regret nothing. Also nobody should really be using this project, outside the fact that it's just a couple Docker containers so you aren't investing into much by running it yourself.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>Antenna, then the Airspy, then software. The radio tunes one 6 MHz RF channel at a time and a <a rel="external" href="https://www.gnuradio.org/">GNU Radio</a> ATSC decoder turns those samples into the MPEG transport stream the station is already sending, about 19.4 Mbps. The virtual channels are programs inside that one stream, so a few of them play at once off the same tune. A station on a different RF channel has to wait while the radio retunes.</p>
+<pre class="giallo" style="color: #CDD6F4; background-color: #1E1E2E;" ><code data-lang="plain"><span class="giallo-l"><span>                                                             ┌─► webtv :80  (browser page, H.264 for browsers)</span></span>
+<span class="giallo-l"><span>antenna ─► Airspy R2 ─► atsc-rx (on-demand tuner) ◄─ /rf/&lt;n&gt; ─┤</span></span>
+<span class="giallo-l"><span>            (USB)       GNU Radio gr-dtv            MPEG-TS  └─► Tvheadend :9981 HTTP (M3U, XMLTV, streams)</span></span>
+<span class="giallo-l"><span>                        127.0.0.1:5600                                     :9982 HTSP (Kodi)</span></span></code></pre>
+<p><code>atsc-rx</code> is the tuner. It only decodes while someone is actually watching. <a rel="external" href="https://tvheadend.org/">Tvheadend</a> publishes the playlist, the guide, and the streams, so VLC, Kodi, and Jellyfin see the same channels. A web page lists them with a reception badge and can play in the browser.</p>
+<p><img src="https://0xvanished.com/raw-dogging-tv/webtv.png" alt="Web TV, channels and the last scan" title="Web TV, channels and the last scan" />
+<em>The page. Reception is 100 minus the packet error rate.</em></p>
+<p>A scan walks the band and only keeps what locks. ATSC 3.0 shows up as a signal with no 8VSB pilot and stops there. This is 1.0.</p>
+<p>Code is <a rel="external" href="https://github.com/0xVANISHED/atsc-airspy-docker-streaming">on GitHub</a>.</p>
+
+    </div>
+  
+</main>
+
+</body>
+</html>
