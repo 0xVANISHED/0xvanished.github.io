@@ -38,9 +38,9 @@ Reconciling that experience a lot later, I did realize that they were vetting me
 
 The whole reason for writing all of this is because I actually found the original "practice recording" as an mp3 on one of my old hard drives. I did go on to play a crazy amount of shows, and genuinely not see the daylight for quite some time. I regret nothing, made a lot of friends, had some wild experiences, slept on a park bench a few times, etc. Much better than a dumb ass euro backpack trip (but seriously you shouldn't travel Japan in earnest if you speak none of the language). You can stream or download it below:
 
-<audio controls preload="metadata" src="https://archive.org/download/re-flex-bright_202610/ReFlex%20-%20%E5%A4%A7%E9%98%AABRIGHT.mp3" style="width: 100%"></audio>
+<audio controls preload="metadata" src="https://ia600903.us.archive.org/24/items/re-flex-bright_202610/ReFlex%20-%20%E5%A4%A7%E9%98%AABRIGHT.mp3" style="width: 100%"></audio>
 
-<p style="text-align: center"><a href="https://archive.org/download/re-flex-bright_202610/ReFlex%20-%20%E5%A4%A7%E9%98%AABRIGHT.mp3" style="font-weight: 700">download</a></p>
+<p style="text-align: center"><a href="https://ia600903.us.archive.org/24/items/re-flex-bright_202610/ReFlex%20-%20%E5%A4%A7%E9%98%AABRIGHT.mp3" style="font-weight: 700">download</a></p>
 
 Notes about the actual set:
 - I did realize, but was probably the first person in the country to have a 12" of [twist 'em out](https://www.youtube.com/watch?v=1GU9p35eNH4) by Dillinja, which I got literally two days before I left, and was a massssssssive tune. That song alone probably was the whole reason why it all went so well
