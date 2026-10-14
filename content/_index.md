@@ -4,6 +4,7 @@ sort_by = "date"
 
 [extra]
 home_projects = [
+  "baby-in-osaka/index.md",
   "raw-dogging-tv/index.md",
   "share-ur-warez/index.md",
   "voidmart/index.md",
